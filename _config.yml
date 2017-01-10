@@ -1,11 +1,11 @@
 # Site settings
-title:       Pixyll
-email:       your_email@example.com
-author:      John Otander
-description: "A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff."
-baseurl:     ""
-url:         "http://pixyll.com"
-date_format: "%b %-d, %Y"
+title: Lauri Pesonen
+email: lauri.pesonen@iki.fi
+author: Lauri Pesonen
+description: ''
+baseurl:     ''
+url:         'http://www.lauripesonen.com'
+date_format: '%b %-d, %Y'
 
 # Google services
 google_verification: oYPRcqsSIra_EDw-kiu3MEm70Fv5SFgYc_FYApoSJr4
@@ -17,14 +17,14 @@ google_tag_manager:
 bing_verification: DBC47664ED791EF9F79D137310252A94
 
 # Optional features
-animated:             false
-show_related_posts:   false
-show_post_footers:    false
-show_social_icons:    false
+animated: false
+show_related_posts: false
+show_post_footers: false
+show_social_icons: true
 ajaxify_contact_form: false
 enable_mathjax: false
 extended_fonts: false
-enable_anchorjs: false
+enable_anchorjs: true
 
 # Facebook Page integration
 # (for instant articles and other stuff)
@@ -42,10 +42,10 @@ facebook_appid:
 facebook_comments_number: 10
 
 # Social icons
-github_username:
+github_username: liwp
 bitbucket_username:
-stackoverflow_id:
-twitter_username:
+stackoverflow_id: liwp
+twitter_username: liwp
 skype_username:
 steam_nickname:
 google_plus_id:
@@ -85,9 +85,9 @@ text:
     stumbleupon:  'Share on StumbleUpon'
     hackernews:   'Share on Hacker News'
   post:
-    updated:        'Updated'
-    minute_read:    'minute read'
-    related_posts:  'Related Posts'
+    updated: 'Updated'
+    minute_read: 'minute read'
+    related_posts: 'Related Posts'
   index:
     coming_soon: 'Coming soon...'
   contact:
@@ -103,11 +103,11 @@ text:
   og_locale: 'en_US'
 
 # Build settings
-markdown:     kramdown
+markdown: kramdown
 redcarpet:
   extensions: ['smart', 'tables', 'with_toc_data']
-permalink:    pretty
-paginate:     4
+permalink: /blog/:title.html
+paginate: 10
 sass:
   compressed: true
 gems:
