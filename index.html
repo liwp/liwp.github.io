@@ -1,28 +1,39 @@
 ---
 layout: default
 ---
-{% assign posts_count = (paginator.posts | size) %}
 
 <div class="home">
-  {% if posts_count > 0 %}
-    <div class="posts">
-      {% for post in paginator.posts %}
-        <div class="post py3">
-          <p class="post-meta">{{ post.date | date: site.date_format }}</p>
-          <a href="{{ post.url | prepend: site.baseurl }}" class="post-link"><h3 class="h1 post-title">{{ post.title }}</h3></a>
-          <p class="post-summary">
-            {% if post.summary %}
-              {{ post.summary }}
-            {% else %}
-              {{ post.excerpt }}
-            {% endif %}
-          </p>
-        </div>
-      {% endfor %}
-    </div>
+  <h1 class="center">AWS Lambda Consulting</h1>
 
-    {% include pagination.html %}
-  {% else %}
-    <h1 class='center'>{{ site.text.index.coming_soon }}</h3>
-  {% endif %}
+  <p>
+    Hi! I'm Lauri Pesonen and I'm a software consultant who helps innovative
+    technology companies adopt Amazon's AWS Lambda as their application backend.
+  </p>
+
+  <p>
+    AWS Lambda offers a number of advantages:
+    <ul>
+      <li>automatic scalability</li>
+      <li>pay only for actual use</li>
+      <li>pain-free integration with other Amazon services</li>
+      <li>generous free tier</li>
+    </ul>
+  </p>
+
+  <p>
+    I can help you design and implement an AWS Lambda -based backend for your
+    application. I can also review your existing backend and offer guidance on
+    how to migrate it to AWS Lambda.
+  </p>
+
+  <p>
+    Click on the button below, send me a quick email and we'll have a chat to
+    discuss your project.
+  </p>
+
+  <div class="py2">
+    <a style="width: 100%;" class="center button button-blue button-big mobile-block" href="/contact.html">
+      Get in touch
+    </a>
+  </div>
 </div>
