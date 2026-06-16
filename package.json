@@ -1,0 +1,17 @@
+{
+  "name": "lauripesonen.com",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/martian-mono": "^5.2.7",
+    "@fontsource/space-mono": "^5.2.9",
+    "astro": "^5.8.0",
+    "gsap": "^3.13.0"
+  }
+}

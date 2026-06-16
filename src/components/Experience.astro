@@ -1,0 +1,213 @@
+---
+import { experience, olderExperience } from '../data/resume';
+
+const flag = (tag: string) => '--' + tag.toLowerCase().replace(/[^a-z0-9+#]+/g, '-');
+---
+
+<section class="section wrap" id="work">
+  <div class="section-head">
+    <span class="addr">[0x01]</span>
+    <h2 data-scramble>./work</h2>
+    <span class="line-fill" aria-hidden="true"></span>
+    <span class="count">{experience.length} entries</span>
+  </div>
+
+  <ol class="log">
+    {
+      experience.map((job) => (
+        <li class="entry" data-print>
+          <div class="entry-head">
+            <h3>{job.role}</h3>
+            <span class="at">@ {job.company}</span>
+            <span class="period label">{job.period}</span>
+          </div>
+          <p class="sum">{job.summary}</p>
+          {job.highlights && (
+            <ul class="highlights">
+              {job.highlights.map((h) => (
+                <li>
+                  <span class="h-label">{h.label}</span>
+                  <span class="h-text">{h.text}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+          <div class="flags label">
+            {job.tags.map((tag) => (
+              <span>{flag(tag)}</span>
+            ))}
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+
+  <details class="older">
+    <summary class="older-toggle label" data-hover-scramble>
+      &gt; ./older — {olderExperience.length} entries
+    </summary>
+    <ol class="log older-log">
+      {
+        olderExperience.map((job) => (
+          <li class="entry">
+            <div class="entry-head">
+              <h3>{job.role}</h3>
+              <span class="at">@ {job.company}</span>
+              <span class="period label">{job.period}</span>
+            </div>
+            <p class="sum">{job.summary}</p>
+            <div class="flags label">
+              {job.tags.map((tag) => (
+                <span>{flag(tag)}</span>
+              ))}
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </details>
+</section>
+
+<style>
+  .log {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 4vw, 3rem);
+  }
+
+  .entry {
+    border-inline-start: 1px solid var(--line);
+    padding-inline-start: clamp(1.25rem, 3vw, 2.5rem);
+    padding-block: 0.5rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+  }
+
+  .entry:hover {
+    border-color: var(--green);
+    background: linear-gradient(90deg, rgba(59, 255, 118, 0.05), transparent 60%);
+  }
+
+  .entry:hover h3 {
+    text-shadow: var(--glow);
+  }
+
+  .entry-head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin-block-end: 0.9rem;
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-size: var(--step-xl);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    color: var(--green);
+  }
+
+  .at {
+    font-size: var(--step-lg);
+    color: var(--green-soft);
+  }
+
+  .period {
+    margin-inline-start: auto;
+    color: var(--green-dim);
+  }
+
+  .sum {
+    margin-block-end: 1rem;
+  }
+
+  .highlights {
+    list-style: none;
+    padding: 0;
+    margin-block: 0 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .highlights li {
+    position: relative;
+    padding-inline-start: 1.4rem;
+    line-height: 1.55;
+  }
+
+  .highlights li::before {
+    content: '▸';
+    position: absolute;
+    inset-inline-start: 0;
+    color: var(--green-dim);
+  }
+
+  .h-label {
+    color: var(--amber);
+    font-weight: 600;
+  }
+
+  .h-label::after {
+    content: ' — ';
+    color: var(--green-dim);
+  }
+
+  .h-text {
+    color: var(--green-soft);
+  }
+
+  .flags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.25rem;
+    color: var(--green-dim);
+  }
+
+  /* ---- collapsible older roles ----------------------------------------- */
+
+  .older {
+    margin-block-start: clamp(2rem, 4vw, 3rem);
+    border-block-start: 1px dashed var(--line);
+    padding-block-start: 1.5rem;
+  }
+
+  .older-toggle {
+    cursor: pointer;
+    list-style: none;
+    color: var(--green-dim);
+    transition: color 0.2s ease;
+    padding-block: 0.25rem;
+  }
+
+  .older-toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .older-toggle:hover {
+    color: var(--green);
+  }
+
+  details[open] .older-toggle {
+    color: var(--amber);
+    margin-block-end: 1.5rem;
+  }
+
+  .older-log {
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .older-log .entry-head h3 {
+    font-size: var(--step-lg);
+  }
+
+  @media (max-width: 720px) {
+    .period {
+      margin-inline-start: 0;
+      flex-basis: 100%;
+    }
+  }
+</style>
