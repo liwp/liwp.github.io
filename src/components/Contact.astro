@@ -1,0 +1,108 @@
+---
+import { profile } from '../data/resume';
+---
+
+<section class="section wrap contact" id="contact">
+  <div class="section-head">
+    <span class="addr">[0x04]</span>
+    <h2 data-scramble>./contact</h2>
+    <span class="line-fill" aria-hidden="true"></span>
+    <span class="count">Get in touch</span>
+  </div>
+
+  <p class="prompt" data-print aria-hidden="true">
+    <span class="ps1">{profile.handle}@cambridge:~$</span>
+    <span>mail {profile.email}</span>
+    <span class="cursor"></span>
+  </p>
+
+  <a class="big-cta" href={`mailto:${profile.email}`} aria-label={`Email ${profile.email}`}>
+    <span data-scramble aria-hidden="true">ESTABLISH</span>
+    <span data-scramble aria-hidden="true">CONNECTION</span>
+  </a>
+
+  <ul class="links" data-print>
+    {
+      profile.links.map((link) => (
+        <li>
+          <a href={link.url} rel="me noopener" target="_blank" data-hover-scramble>
+            &gt; {link.label.toLowerCase().replace(/\s+/g, '-')}
+          </a>
+        </li>
+      ))
+    }
+    <li><a href="#top" data-hover-scramble>&gt; back-to-top</a></li>
+  </ul>
+</section>
+
+<style>
+  .prompt {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6ch;
+    font-size: var(--step-md);
+    margin-block-end: clamp(1.5rem, 4vh, 3rem);
+  }
+
+  .ps1 {
+    color: var(--green-dim);
+  }
+
+  .prompt .cursor {
+    width: 0.55em;
+    height: 1em;
+  }
+
+  .big-cta {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 9.5vw, 7.5rem);
+    font-weight: 760;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--green);
+    text-shadow: var(--glow);
+    margin-block-end: clamp(2rem, 5vh, 3.5rem);
+    transition: color 0.3s ease;
+  }
+
+  .big-cta:hover {
+    color: var(--amber);
+    text-shadow: 0 0 12px rgba(255, 180, 84, 0.5);
+  }
+
+  .links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-family: var(--font-display);
+    font-size: var(--step-xs);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    border-block-start: 1px solid var(--line);
+    padding-block-start: 1.5rem;
+  }
+
+  .links a {
+    display: block;
+    white-space: nowrap;
+  }
+
+  /* Arrows live in CSS so they're never inside the scramble text.
+     Monospace chars are all identical width, so scramble is stable. */
+  .links a[target="_blank"]::after {
+    content: ' ↗';
+  }
+
+  .links a[href="#top"]::after {
+    content: ' ↑';
+  }
+
+  .links a:hover {
+    color: var(--amber);
+  }
+</style>

@@ -1,0 +1,79 @@
+---
+import { education } from '../data/resume';
+---
+
+<section class="section wrap" id="education">
+  <div class="section-head">
+    <span class="addr">[0x02]</span>
+    <h2 data-scramble>./education</h2>
+    <span class="line-fill" aria-hidden="true"></span>
+    <span class="count">{education.length} degrees</span>
+  </div>
+
+  <div class="roms">
+    {
+      education.map((entry, i) => (
+        <div class="rom" data-print>
+          <span class="ver label">{entry.period}</span>
+          <h3>{entry.degree}</h3>
+          <p class="school">{entry.school}</p>
+          <p class="note">{entry.note}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .roms {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .rom {
+    border-inline-start: 1px solid var(--line);
+    padding-inline-start: clamp(1.25rem, 3vw, 2.5rem);
+    padding-block: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+  }
+
+  .rom:hover {
+    border-color: var(--green);
+    background: linear-gradient(90deg, rgba(59, 255, 118, 0.05), transparent 60%);
+  }
+
+  .rom:hover h3 {
+    text-shadow: var(--glow);
+  }
+
+  .ver {
+    color: var(--amber);
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-size: var(--step-lg);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--green);
+  }
+
+  .school {
+    color: var(--green-soft);
+  }
+
+  .note {
+    color: var(--green-dim);
+    font-size: var(--step-md);
+  }
+
+  @media (max-width: 720px) {
+    .roms {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
