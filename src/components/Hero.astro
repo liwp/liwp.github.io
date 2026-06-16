@@ -1,0 +1,166 @@
+---
+import { profile } from '../data/resume';
+
+const uptime = new Date().getFullYear() - profile.since;
+---
+
+<header class="hero wrap" id="top">
+  <div class="boot" data-print aria-hidden="true">
+    <span>&gt;&gt; BOOT SEQUENCE INITIATED</span>
+    <span>&gt;&gt; MOUNTING /dev/career .......... OK</span>
+    <span>&gt;&gt; LOADING PROFILE: {profile.handle} ....... OK</span>
+    <span>&gt;&gt; UPTIME: {uptime} YEARS</span>
+    <span class="ok">&gt;&gt; SYSTEM ONLINE</span>
+  </div>
+
+  <h1 class="hero-name" aria-label={`${profile.name.first} ${profile.name.last}`}>
+    <span class="ln" data-scramble aria-hidden="true">{profile.name.first.toUpperCase()}</span>
+    <span class="row" aria-hidden="true">
+      <span class="ln" data-scramble>{profile.name.last.toUpperCase()}</span><span
+        class="cursor name-cursor" data-cursor-end></span>
+    </span>
+  </h1>
+
+  <p class="tagline" data-reveal>
+    <span class="comment">//</span>
+    {profile.tagline}
+  </p>
+
+  <div class="hero-meta">
+    <div class="meta-cell" data-reveal>
+      <span class="label key">[ROLE]</span>
+      <span>{profile.title}</span>
+    </div>
+    <div class="meta-cell" data-reveal>
+      <span class="label key">[LOC]</span>
+      <span>{profile.location}</span>
+      <span class="coords">{profile.coordinates}</span>
+    </div>
+    <div class="meta-cell" data-reveal>
+      <span class="label key">[STATUS]</span>
+      <span class="avail">{profile.availability}</span>
+    </div>
+    <nav class="meta-cell commands" data-reveal aria-label="Sections">
+      <a href="#work" data-hover-scramble>&gt; ./work</a>
+      <a href="#education" data-hover-scramble>&gt; ./education</a>
+      <a href="#projects" data-hover-scramble>&gt; ./projects</a>
+      <a href="#contact" data-hover-scramble>&gt; ./contact</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-block: clamp(3rem, 6svh, 5rem) clamp(1.5rem, 3svh, 2.5rem);
+    gap: clamp(1rem, 2.5svh, 2.5rem);
+  }
+
+  .boot {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: var(--step-xs);
+    letter-spacing: 0.08em;
+    color: var(--green-dim);
+  }
+
+  .boot .ok {
+    color: var(--green);
+    text-shadow: var(--glow);
+  }
+
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: var(--step-hero);
+    font-weight: 760;
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    color: var(--green);
+    text-shadow: var(--glow);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ln {
+    display: inline-block;
+  }
+
+  .row {
+    display: flex;
+    align-items: baseline;
+  }
+
+  .name-cursor {
+    width: 0.5em;
+    height: 0.80em;
+    margin-inline-start: 0.12em;
+  }
+
+  .tagline {
+    font-size: var(--step-lg);
+    max-width: 38ch;
+    line-height: 1.5;
+  }
+
+  .comment {
+    color: var(--green-dim);
+  }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) 8rem;
+    gap: 1.5rem 2.5rem;
+    border-block-start: 1px solid var(--line);
+    padding-block-start: 1.5rem;
+    align-items: start;
+  }
+
+  .meta-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: var(--step-md);
+  }
+
+  .key {
+    color: var(--amber);
+  }
+
+  .avail {
+    color: var(--green);
+  }
+
+  .commands {
+    gap: 0.35rem;
+    font-family: var(--font-display);
+    font-size: var(--step-xs);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+
+  .commands a {
+    white-space: nowrap;
+  }
+
+  .commands a:hover {
+    color: var(--amber);
+  }
+
+  @media (max-width: 880px) {
+    .hero-meta {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .commands {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.25rem;
+      grid-column: 1 / -1;
+      padding-block-start: 0.5rem;
+    }
+  }
+</style>
