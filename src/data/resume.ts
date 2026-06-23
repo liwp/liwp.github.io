@@ -156,17 +156,24 @@ export const projects = [
     stack: ['Clojure'],
   },
   {
-    name: 'rasp.surge.sh',
+    name: 'rasp-ui',
     description: 'Gliding weather forecast app. Renders RASP (Regional Atmospheric Soaring Prediction) charts for UK and European sites.',
-    url: 'https://rasp.surge.sh/',
+    url: 'https://github.com/liwp/rasp-ui',
     status: 'RUNNING',
-    stack: ['JavaScript'],
+    stack: ['TypeScript'],
   },
   {
     name: 'xcdebrief',
     description: 'Post-flight gap analysis for UK XC glider pilots. Compares actual flights against optimal routes to identify missed opportunities.',
     url: '',
     status: 'WIP',
+    stack: ['TypeScript'],
+  },
+  {
+    name: 'cgc-trophies',
+    description: 'Cambridge Gliding Centre annual trophies. Scores BGA Ladder flight data against club trophy rules and shows the winners.',
+    url: 'https://github.com/liwp/cgc-trophies',
+    status: 'RUNNING',
     stack: ['TypeScript'],
   },
 ];
